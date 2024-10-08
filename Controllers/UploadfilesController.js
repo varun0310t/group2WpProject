@@ -56,8 +56,8 @@ export const uploadFilesLocal = async (req, res) => {
         }
 
         const files = req.files.map(file => (
-            file.path
-
+          
+         file.filename
         ));
 
         // Add files to user model

@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/'); // Specify the destination directory
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now()+path.extname(file.originalname)); // Specify the file naming convention
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); // Specify the file naming convention
   }
 });
 
@@ -20,10 +20,10 @@ const storagelocal = multer.diskStorage({
     cb(null, 'localStorage/'); // Specify the destination directory
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname+file.originalname + '-' + Date.now()+path.extname(file.originalname)); // Specify the file naming convention
+    cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname)); // Specify the file naming convention
   }
 });
 
 // Initialize Multer with the storage configuration
 const local = multer({ storage: storagelocal });
-export { upload,local };
+export { upload, local };
