@@ -33,32 +33,32 @@ export const downloadDocumentLocal = async (req, res) => {
         res.status(200).send(files);
 
     } catch (error) {
-        res.status(500).send("An error occurred");  // Add this line to send a response
-        console.log(error);  // Add this line to log the error
+        res.status(500).send("An error occurred");  
+        console.log(error);  
     }
 }
 
-export const downloadDocumentLocalPost = async (req, res) => {  // Add this line to define the downloadDocumentLocalPost function
+export const downloadDocumentLocalPost = async (req, res) => { 
     try {
-        const currentUser = await User.findOne({ username: req.user.username });  // Add this line to find the user
-        if (!currentUser) {  // Add this line to check if the user does not exist
-            return res.status(404).send("User not found");  // Add this line to send a response
+        const currentUser = await User.findOne({ username: req.user.username }); 
+        if (!currentUser) {  
+            return res.status(404).send("User not found");  
         }
        const filename= req.body.filename;
         const files = currentUser.fileurl;
-        const file = files.find(file => file === filename);  // Add this line to find the file
-        if (!file) {  // Add this line to check if the file does not exist
-            return res.status(404).send("File not found");  // Add this line to send a response
+        const file = files.find(file => file === filename);  
+        if (!file) {  
+            return res.status(404).send("File not found");  
         }
-        //from lcoal storage search this file and send it to the user
+        
 
-          res.download(`localStorage/${filename}`);  // Add this line to send the file to the user   
+          res.download(`localStorage/${filename}`);
        
     }
 
-    catch (error) {  // Add this line to catch an error
-        res.status(500).send("An error occurred");  // Add this line to send a response
-        console.log(error);  // Add this line to log the error
+    catch (error) {  
+        res.status(500).send("An error occurred");  
+        console.log(error); 
     }
 
 }
