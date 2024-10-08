@@ -1,7 +1,7 @@
-import { User } from '../models/userModel.js';
+import User from '../models/userModel.js';
 import jwt from 'jsonwebtoken';
 
-exports.signup = function (req, res) {
+ export const signup = function (req, res) {
     const { username, password } = req.body;
     if (!username || !password) {
         return res.status(400).send("Username and password are required");
@@ -23,5 +23,4 @@ exports.signup = function (req, res) {
             res.status(500).send("An error occurred");
         });
 };
-
 

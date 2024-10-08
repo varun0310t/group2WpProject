@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-
+import User from '../models/userModel.js';
 export const login = function (req, res) {
     const { username, password } = req.body;
     if (!username || !password) {

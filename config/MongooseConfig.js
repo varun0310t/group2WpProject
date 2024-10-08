@@ -1,11 +1,10 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-export default function MongooseConfig() {
+export default function connectDB() {
     mongoose.connect(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false
+   
     });
     mongoose.connection.on("connected", () => {
         console.log("Mongoose is connected");
